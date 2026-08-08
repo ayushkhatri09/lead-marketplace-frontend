@@ -1,65 +1,484 @@
-import Image from "next/image";
+
+"use client";
+
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+
+import HeroSection from "@/components/home/HeroSection";
+import SearchBar from "@/components/home/SearchBar";
+import ProviderList from "@/components/home/ProviderList";
+import MyLeads from "@/components/home/MyLead";
+
+import AvailableLeadList from "@/components/provider/AvailableLeadList";
+import HistoryLeadList from "@/components/provider/HistoryLeadList";
+
+import { nearbyProviders } from "@/api/providerAuthApi";
+
+import { useAuth } from "@/context/AuthContext";
+import { useProviderAuth } from "@/context/ProviderAuthContext";
+
+
+const GoogleMap = dynamic(
+  () => import("@/components/home/GoogleMap"),
+  {
+    ssr: false,
+  }
+);
+
 
 export default function Home() {
+
+
+  const [search, setSearch] = useState("");
+
+  const [providers, setProviders] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+
+  const [location, setLocation] = useState({
+    latitude: null,
+    longitude: null,
+  });
+
+
+
+  const {
+    auth,
+  } = useAuth();
+
+
+
+  const {
+    providerAuth,
+  } = useProviderAuth();
+
+
+
+  const userLoggedIn =
+    auth.isAuthenticated;
+
+
+  const providerLoggedIn =
+    providerAuth.isAuthenticated;
+
+
+
+  // ==============================
+  // GET USER CURRENT LOCATION
+  // ==============================
+
+  useEffect(() => {
+
+
+    if (!userLoggedIn)
+      return;
+
+
+
+    if (!navigator.geolocation) {
+
+      console.log(
+        "Geolocation not supported"
+      );
+
+      return;
+    }
+
+
+
+    navigator.geolocation.getCurrentPosition(
+
+      (position)=>{
+
+
+        setLocation({
+
+          latitude:
+            position.coords.latitude,
+
+          longitude:
+            position.coords.longitude,
+
+        });
+
+
+      },
+
+
+      (error)=>{
+
+        console.log(
+          "Location Error",
+          error
+        );
+
+      }
+
+    );
+
+
+
+  },[
+    userLoggedIn
+  ]);
+
+
+
+
+
+  // ==============================
+  // FETCH NEARBY PROVIDERS
+  // ==============================
+
+
+  useEffect(()=>{
+
+
+    if(
+
+      userLoggedIn &&
+
+      location.latitude !== null &&
+
+      location.longitude !== null
+
+    ){
+
+      fetchProviders();
+
+    }
+
+
+
+  },[
+
+    userLoggedIn,
+
+    location.latitude,
+
+    location.longitude
+
+  ]);
+
+
+
+
+
+
+  const fetchProviders = async()=>{
+
+
+    try{
+
+
+      setLoading(true);
+
+
+
+      const response = await nearbyProviders(
+  location.latitude,
+  location.longitude
+);
+
+
+
+      console.log(
+        "NEARBY PROVIDERS:",
+        response.data.data
+      );
+
+
+
+      setProviders(
+
+        response.data.data || []
+
+      );
+
+
+
+    }
+
+    catch(error){
+
+
+      console.error(
+
+        "Nearby Provider Error",
+
+        error
+
+      );
+
+
+    }
+
+    finally{
+
+
+      setLoading(false);
+
+
+    }
+
+
+  };
+
+
+
+
+
+  // ==============================
+  // SEARCH FILTER
+  // ==============================
+
+
+  const filteredProviders =
+
+    providers.filter((provider)=>{
+
+
+      if(!search)
+        return true;
+
+
+
+      return (
+
+        provider.service_name
+
+        ?.toLowerCase()
+
+        .includes(
+
+          search.toLowerCase()
+
+        )
+
+      );
+
+
+    });
+
+
+
+
+
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+
+    <main className="
+      min-h-screen
+      bg-[var(--color-background)]
+    ">
+
+
+
+      <HeroSection />
+
+
+
+      <div className="
+        mx-auto
+        max-w-7xl
+        px-6
+        py-10
+      ">
+
+
+
+        {/* ================= USER ================= */}
+
+
+        {
+          userLoggedIn && (
+
+          <>
+
+
+            <SearchBar
+
+              value={search}
+
+              onChange={(e)=>
+                setSearch(
+                  e.target.value
+                )
+              }
+
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+
+
+
+            <div className="
+              mt-8
+              grid
+              gap-8
+              lg:grid-cols-2
+            ">
+
+
+
+              <GoogleMap
+
+
+                key={
+                  `${location.latitude}-${location.longitude}`
+                }
+
+
+                providers={providers}
+
+
+                currentLocation={location}
+
+
+              />
+
+
+
+
+
+              <ProviderList
+
+
+                providers={
+                  filteredProviders
+                }
+
+
+                loading={
+                  loading
+                }
+
+
+              />
+
+
+
+            </div>
+
+
+
+
+
+
+            <div className="
+              mt-10
+            ">
+
+
+              <MyLeads />
+
+
+            </div>
+
+
+
+          </>
+
+          )
+        }
+
+
+
+
+
+
+        {/* ================= PROVIDER ================= */}
+
+
+        {
+          providerLoggedIn && (
+
+
+            <div className="
+              space-y-10
+            ">
+
+
+              <AvailableLeadList />
+
+
+              <HistoryLeadList />
+
+
+
+            </div>
+
+
+          )
+        }
+
+
+
+
+
+
+
+        {/* ================= GUEST ================= */}
+
+
+
+        {
+          !userLoggedIn &&
+          !providerLoggedIn && (
+
+
+            <div className="
+              py-20
+              text-center
+            ">
+
+
+
+              <h2 className="
+                text-3xl
+                font-bold
+              ">
+
+
+                Welcome to Lead Marketplace
+
+
+              </h2>
+
+
+
+
+
+              <p className="
+                mt-4
+                text-gray-500
+              ">
+
+
+                Login as User or Provider to continue.
+
+
+              </p>
+
+
+
+            </div>
+
+
+          )
+        }
+
+
+
+
+      </div>
+
+
+
+    </main>
+
+
   );
+
 }

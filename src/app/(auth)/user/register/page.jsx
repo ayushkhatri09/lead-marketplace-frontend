@@ -1,0 +1,9 @@
+import UserRegisterForm from "@/components/auth/UserRegisterForm";
+
+export default function RegisterPage() {
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-background px-4">
+      <UserRegisterForm />
+    </main>
+  );
+}
