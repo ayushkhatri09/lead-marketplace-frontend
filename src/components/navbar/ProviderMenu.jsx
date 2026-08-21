@@ -66,18 +66,10 @@ export default function ProviderMenu() {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        align="end"
-        className="
-          w-56
-          rounded-[var(--radius-lg)]
-          border
-          border-[var(--color-border)]
-          bg-[var(--color-surface-elevated)]
-          text-[var(--color-foreground)]
-          shadow-[var(--shadow-lg)]
-          p-2
-        "
-      >
+  align="end"
+  sideOffset={25}
+  className="z-[9999] min-w-[210px] rounded-2xl border bg-[var(--color-surface)] p-2 shadow-lg"
+>
         <div className="px-2 py-1.5">
           <p className="text-sm font-semibold">
             Provider Account

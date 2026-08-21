@@ -8,31 +8,37 @@
   width: 100%;
   height: var(--navbar-height, 72px);
 
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
-  gap: var(--space-6, 1.5rem);
+  justify-content: space-between;
 
   padding: 0 var(--space-12, 3rem);
 
-  background: color-mix(in srgb, var(--color-background) 85%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--color-background) 85%,
+    transparent
+  );
+
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
   border-bottom: 1px solid var(--color-divider);
 
-  transition: background var(--duration-base, 220ms) var(--ease-standard, ease),
-              border-color var(--duration-base, 220ms) var(--ease-standard, ease);
+  transition:
+    background var(--duration-base, 220ms)
+      var(--ease-standard, ease),
+    border-color var(--duration-base, 220ms)
+      var(--ease-standard, ease);
 }
 
-/* ---- Center nav links ---- */
+/* Center nav links */
 
 .navbar nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--space-8, 2rem);
-
   list-style: none;
 }
 
@@ -46,10 +52,12 @@
 
   font-size: 0.9rem;
   font-weight: var(--font-weight-medium, 500);
+
   color: var(--color-foreground-secondary);
   text-decoration: none;
 
-  transition: color var(--duration-fast, 150ms) var(--ease-standard, ease);
+  transition:
+    color var(--duration-fast, 150ms) var(--ease-standard, ease);
 }
 
 .navbar nav ul li a:hover,
@@ -57,18 +65,26 @@
   color: var(--color-foreground);
 }
 
-/* Beacon underline — grows in from center on hover/active */
+/* Underline */
+
 .navbar nav ul li a::after {
   content: "";
+
   position: absolute;
   left: 50%;
   bottom: -4px;
+
   width: 0;
   height: 2px;
+
   border-radius: var(--radius-pill, 999px);
+
   background: var(--color-primary);
+
   transform: translateX(-50%);
-  transition: width var(--duration-base, 220ms) var(--ease-out, ease);
+
+  transition:
+    width var(--duration-base, 220ms) var(--ease-out, ease);
 }
 
 .navbar nav ul li a:hover::after,
@@ -80,7 +96,7 @@
   color: var(--color-foreground);
 }
 
-/* ---- Right-side actions ---- */
+/* Right actions */
 
 .navbar-actions {
   display: flex;
@@ -88,11 +104,15 @@
   gap: var(--space-3, 0.75rem);
 }
 
+/* Buttons */
+
 .navbar button {
   height: 40px;
+
   padding: 0 var(--space-5, 1.25rem);
 
   border-radius: var(--radius-md, 0.75rem);
+
   border: 1px solid transparent;
 
   font-size: 0.85rem;
@@ -100,17 +120,19 @@
 
   cursor: pointer;
 
-  transition: background var(--duration-fast, 150ms) var(--ease-standard, ease),
-              border-color var(--duration-fast, 150ms) var(--ease-standard, ease),
-              box-shadow var(--duration-base, 220ms) var(--ease-out, ease),
-              transform var(--duration-fast, 150ms) var(--ease-out, ease);
+  transition:
+    background var(--duration-fast, 150ms) var(--ease-standard, ease),
+    border-color var(--duration-fast, 150ms) var(--ease-standard, ease),
+    box-shadow var(--duration-base, 220ms) var(--ease-out, ease),
+    transform var(--duration-fast, 150ms) var(--ease-out, ease);
 }
 
 .navbar button:active {
   transform: scale(0.97);
 }
 
-/* Ghost / secondary action — e.g. "Log in" */
+/* Ghost */
+
 .navbar button.btn-ghost {
   background: transparent;
   border-color: var(--color-border);
@@ -122,7 +144,8 @@
   border-color: var(--border-hover, var(--color-border-strong));
 }
 
-/* Primary action — e.g. "Post a request" */
+/* Primary */
+
 .navbar button.btn-primary {
   background: var(--color-primary);
   color: var(--color-primary-foreground);
@@ -134,14 +157,19 @@
   box-shadow: var(--shadow-hover, var(--shadow-md));
 }
 
-/* Icon-only button (e.g. theme toggle, notifications) */
+/* Icon */
+
 .navbar button.btn-icon {
   width: 40px;
   padding: 0;
+
   border-radius: var(--radius-pill, 999px);
+
   background: transparent;
   border-color: var(--color-border);
+
   color: var(--color-foreground-secondary);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -153,7 +181,7 @@
   color: var(--color-foreground);
 }
 
-/* ---- Responsive ---- */
+/* Responsive */
 
 @media (max-width: 860px) {
   .navbar {

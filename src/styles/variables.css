@@ -1,172 +1,173 @@
-/* ==========================================================================
-   LEAD MARKETPLACE — DESIGN TOKEN SYSTEM
-   Theme: Dispatch (v2 — vivid)
-   Version: 2.0.0
-
-   Same token names/architecture as v1.0.0 — only the accent ramps got
-   punchier: Beacon Amber shifted from a muted clay-orange to a saturated
-   tangerine, Uniform Navy picked up an indigo undertone, Verified Teal
-   moved to a vivid emerald-mint, and Ember is now a bold coral-red.
-   Two new additive tokens: --gradient-brand and --gradient-vibrant, for
-   surfaces (hero sections, CTAs) that want extra pop. Nothing existing
-   was renamed or removed, so every component built against v1 still
-   works unchanged.
-   ========================================================================== */
-
-/* ==========================================================================
-   1. BRAND — RAW COLOR RAMPS (theme-agnostic, never referenced directly
-      in components; consumed only by the semantic layer below)
-   ========================================================================== */
+/* ============================================================
+   LEAD MARKETPLACE — DESIGN TOKENS
+   ============================================================ */
 
 :root {
-  --brand-ink: #14151C;
-  --brand-stone-paper: #F4F5F1;
-  --brand-beacon-amber: #F58A1F;
-  --brand-uniform-navy: #33396F;
-  --brand-verified-teal: #00B389;
-  --brand-ember: #F5372B;
+  --brand-ink: #222222;
+  --brand-stone-paper: #F7F7F7;
 
-  /* Neutral ramp — warm stone-to-ink */
-  --neutral-50: #FBFAF8;
-  --neutral-100: #F4F5F1;
-  --neutral-200: #EAE7E0;
-  --neutral-300: #D9D5CB;
-  --neutral-400: #B3AFA3;
-  --neutral-500: #8C887B;
-  --neutral-600: #6B6A64;
-  --neutral-700: #4D4C48;
-  --neutral-800: #2B2C33;
-  --neutral-900: #14151C;
+  --brand-beacon-amber: #FF385C;
+  --brand-uniform-navy: #460479;
+  --brand-verified-teal: #1FA37D;
+  --brand-ember: #C13515;
 
-  /* Amber ramp — Beacon Amber, live/primary signal (vivid tangerine) */
-  --amber-50: #FFF6E9;
-  --amber-100: #FFE8C2;
-  --amber-200: #FFD08C;
-  --amber-300: #FFB65A;
-  --amber-400: #FF9F33;
-  --amber-500: #F58A1F;
-  --amber-600: #D9720F;
-  --amber-700: #B85A0A;
-  --amber-800: #8C4308;
-  --amber-900: #5C2C06;
+  --neutral-50: #FFFFFF;
+  --neutral-100: #F7F7F7;
+  --neutral-200: #F2F2F2;
+  --neutral-300: #EBEBEB;
+  --neutral-400: #DDDDDD;
+  --neutral-500: #C1C1C1;
+  --neutral-600: #929292;
+  --neutral-700: #6A6A6A;
+  --neutral-800: #3F3F3F;
+  --neutral-900: #222222;
 
-  /* Navy ramp — Uniform Navy, authority/secondary (indigo-leaning) */
-  --navy-50: #EEF0FA;
-  --navy-100: #D6DAF2;
-  --navy-200: #AFB6E3;
-  --navy-300: #8992D2;
-  --navy-400: #5F68B8;
-  --navy-500: #454E96;
-  --navy-600: #33396F;
-  --navy-700: #282D57;
-  --navy-800: #1D2140;
-  --navy-900: #14162C;
+  --amber-50: #FFF1F3;
+  --amber-100: #FFD1DA;
+  --amber-200: #FFA8B8;
+  --amber-300: #FF7D95;
+  --amber-400: #FF5A78;
+  --amber-500: #FF385C;
+  --amber-600: #E00B41;
+  --amber-700: #C1093A;
+  --amber-800: #8C0730;
+  --amber-900: #5C0420;
 
-  /* Teal ramp — Verified Teal, trust/success (vivid emerald-mint) */
-  --teal-50: #E6FBF5;
-  --teal-100: #B8F3E2;
-  --teal-200: #7EE8CB;
-  --teal-300: #45D9AF;
-  --teal-400: #14C79A;
-  --teal-500: #00B389;
-  --teal-600: #009471;
-  --teal-700: #00755A;
-  --teal-800: #045943;
-  --teal-900: #06382C;
+  --navy-50: #F3E9FA;
+  --navy-100: #E1C6F2;
+  --navy-200: #C596E3;
+  --navy-300: #A566D2;
+  --navy-400: #7F3FB8;
+  --navy-500: #632499;
+  --navy-600: #460479;
+  --navy-700: #35035C;
+  --navy-800: #250240;
+  --navy-900: #16012A;
 
-  /* Ember ramp — danger/destructive (vivid coral-red) */
-  --ember-50: #FFEDEC;
-  --ember-100: #FFD1CE;
-  --ember-200: #FFA7A1;
-  --ember-300: #FF7A72;
-  --ember-400: #FF554B;
-  --ember-500: #F5372B;
-  --ember-600: #D2261C;
-  --ember-700: #A61B14;
-  --ember-800: #7A150F;
-  --ember-900: #4D0E0A;
+  --teal-50: #EAF7F3;
+  --teal-100: #C7EBE0;
+  --teal-200: #96DAC7;
+  --teal-300: #62C7AC;
+  --teal-400: #3AB794;
+  --teal-500: #1FA37D;
+  --teal-600: #178568;
+  --teal-700: #106753;
+  --teal-800: #0A4A3B;
+  --teal-900: #052E25;
 
-  /* Signature gradients — for hero/CTA surfaces that want extra vibrancy */
-  --gradient-brand: linear-gradient(135deg, var(--amber-400), var(--amber-600));
-  --gradient-vibrant: linear-gradient(135deg, var(--amber-500), var(--teal-400));
-  --gradient-navy: linear-gradient(135deg, var(--navy-600), var(--navy-900));
+  --ember-50: #FDECE8;
+  --ember-100: #F8C7BA;
+  --ember-200: #F19C86;
+  --ember-300: #E96F52;
+  --ember-400: #DA4A2C;
+  --ember-500: #C13515;
+  --ember-600: #B32505;
+  --ember-700: #8C1D04;
+  --ember-800: #661503;
+  --ember-900: #400D02;
 
-  /* ==========================================================================
-     2. SURFACE COLORS
-     ========================================================================== */
-  --color-background: var(--neutral-100);
-  --color-surface: #FDFDFB;
+  --gradient-brand:
+    linear-gradient(135deg, var(--amber-400), var(--amber-600));
+
+  --gradient-vibrant:
+    linear-gradient(135deg, var(--amber-500), var(--navy-600));
+
+  --gradient-navy:
+    linear-gradient(135deg, var(--navy-500), var(--navy-900));
+
+  --color-background: var(--neutral-50);
+  --color-surface: #FFFFFF;
   --color-surface-elevated: #FFFFFF;
-  --color-surface-sunken: var(--neutral-200);
+  --color-surface-sunken: var(--neutral-100);
   --color-surface-inverse: var(--neutral-900);
-  --color-overlay: rgba(20, 21, 28, 0.48);
-  --color-scrim: rgba(20, 21, 28, 0.72);
 
-  /* ==========================================================================
-     3. SEMANTIC COLORS
-     ========================================================================== */
+  --color-overlay: rgba(34, 34, 34, 0.48);
+  --color-scrim: rgba(0, 0, 0, 0.5);
+
   --color-foreground: var(--neutral-900);
-  --color-foreground-secondary: var(--neutral-700);
-  --color-foreground-muted: var(--neutral-500);
+  --color-foreground-secondary: var(--neutral-800);
+  --color-foreground-muted: var(--neutral-700);
   --color-foreground-inverse: var(--neutral-50);
 
   --color-primary: var(--amber-500);
-  --color-primary-foreground: var(--neutral-900);
+  --color-primary-foreground: #FFFFFF;
+
   --color-secondary: var(--navy-600);
-  --color-secondary-foreground: var(--neutral-50);
+  --color-secondary-foreground: #FFFFFF;
+
   --color-accent: var(--teal-500);
-  --color-accent-foreground: var(--neutral-50);
+  --color-accent-foreground: #FFFFFF;
 
   --color-success: var(--teal-500);
-  --color-success-foreground: var(--neutral-50);
+  --color-success-foreground: #FFFFFF;
+
   --color-warning: var(--amber-600);
-  --color-warning-foreground: var(--neutral-900);
+  --color-warning-foreground: #FFFFFF;
+
   --color-danger: var(--ember-500);
-  --color-danger-foreground: var(--neutral-50);
+  --color-danger-foreground: #FFFFFF;
+
   --color-info: var(--navy-400);
-  --color-info-foreground: var(--neutral-50);
+  --color-info-foreground: #FFFFFF;
 
   --color-muted: var(--neutral-200);
-  --color-muted-foreground: var(--neutral-600);
+  --color-muted-foreground: var(--neutral-700);
 
-  --color-border: var(--neutral-200);
-  --color-border-strong: var(--neutral-300);
-  --color-input: var(--neutral-200);
-  --color-divider: var(--neutral-200);
+  --color-border: var(--neutral-400);
+  --color-border-strong: var(--neutral-500);
+  --color-input: var(--neutral-400);
+  --color-divider: var(--neutral-300);
 
   --color-disabled-bg: var(--neutral-200);
-  --color-disabled-foreground: var(--neutral-400);
+  --color-disabled-foreground: var(--neutral-600);
 
-  /* ==========================================================================
-     4. INTERACTIVE STATES
-     ========================================================================== */
-  --state-hover-overlay: rgba(20, 21, 28, 0.04);
-  --state-pressed-overlay: rgba(20, 21, 28, 0.08);
+  --state-hover-overlay: rgba(34, 34, 34, 0.04);
+  --state-pressed-overlay: rgba(34, 34, 34, 0.08);
+
   --state-selected-bg: var(--amber-50);
   --state-selected-border: var(--amber-500);
   --state-active-bg: var(--amber-100);
 
   --primary-hover: var(--amber-600);
   --primary-pressed: var(--amber-700);
+
   --secondary-hover: var(--navy-500);
   --secondary-pressed: var(--navy-700);
+
   --accent-hover: var(--teal-600);
   --accent-pressed: var(--teal-700);
+
   --danger-hover: var(--ember-600);
   --danger-pressed: var(--ember-700);
+
   --surface-hover: #FFFFFF;
-  --border-hover: var(--neutral-300);
+  --border-hover: var(--neutral-500);
 
   --focus-ring: var(--amber-500);
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
 
-  /* ==========================================================================
-     5. TYPOGRAPHY
-     ========================================================================== */
-  --font-family-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-family-display: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --font-family-sans:
+    "Airbnb Cereal VF",
+    Circular,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    sans-serif;
+
+  --font-family-display:
+    "Airbnb Cereal VF",
+    Circular,
+    -apple-system,
+    sans-serif;
+
+  --font-family-mono:
+    "JetBrains Mono",
+    ui-monospace,
+    "SF Mono",
+    monospace;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -175,31 +176,31 @@
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.8125rem;
-  --font-size-base: 0.9375rem;
+  --font-size-base: 0.875rem;
   --font-size-md: 1rem;
-  --font-size-lg: 1.125rem;
+  --font-size-lg: 1.25rem;
   --font-size-xl: 1.375rem;
   --font-size-2xl: 1.75rem;
   --font-size-3xl: 2.25rem;
   --font-size-4xl: 3rem;
-  --font-size-5xl: 3.75rem;
+  --font-size-5xl: 4rem;
 
-  --font-size-heading-responsive: clamp(1.75rem, 1.4rem + 1.5vw, 3rem);
-  --font-size-display-responsive: clamp(2.25rem, 1.6rem + 2.5vw, 4rem);
+  --font-size-heading-responsive:
+    clamp(1.375rem, 1.1rem + 1.2vw, 1.75rem);
 
-  --line-height-tight: 1.2;
-  --line-height-snug: 1.35;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.65;
+  --font-size-display-responsive:
+    clamp(1.75rem, 1.3rem + 2vw, 4rem);
+
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.2;
+  --line-height-normal: 1.43;
+  --line-height-relaxed: 1.5;
 
   --letter-spacing-tight: -0.02em;
   --letter-spacing-normal: 0em;
   --letter-spacing-wide: 0.02em;
   --letter-spacing-wider: 0.04em;
 
-  /* ==========================================================================
-     6. SPACING — 8px system with 4px half-step
-     ========================================================================== */
   --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -215,34 +216,48 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* ==========================================================================
-     7. BORDER RADIUS
-     ========================================================================== */
   --radius-none: 0;
   --radius-xs: 0.25rem;
   --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.75rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 2.5rem;
   --radius-pill: 999px;
   --radius-full: 50%;
 
-  /* ==========================================================================
-     8. ELEVATION
-     ========================================================================== */
-  --shadow-xs: 0 1px 2px rgba(20, 21, 28, 0.04);
-  --shadow-sm: 0 2px 4px rgba(20, 21, 28, 0.05);
-  --shadow-md: 0 4px 12px rgba(20, 21, 28, 0.06), 0 1px 2px rgba(20, 21, 28, 0.04);
-  --shadow-lg: 0 12px 24px rgba(20, 21, 28, 0.08), 0 2px 6px rgba(20, 21, 28, 0.05);
-  --shadow-xl: 0 24px 48px rgba(20, 21, 28, 0.12), 0 4px 12px rgba(20, 21, 28, 0.06);
-  --shadow-floating: 0 20px 60px rgba(20, 21, 28, 0.14);
-  --shadow-hover: 0 16px 32px rgba(219, 139, 43, 0.14), 0 4px 10px rgba(20, 21, 28, 0.06);
-  --shadow-focus: 0 0 0 3px rgba(219, 139, 43, 0.35);
+  --shadow-xs:
+    0 0 0 1px rgba(0, 0, 0, 0.02);
 
-  /* ==========================================================================
-     9. MOTION — Linear-inspired: fast, purposeful, never playful
-     ========================================================================== */
+  --shadow-sm:
+    rgba(0, 0, 0, 0.02) 0 0 0 1px,
+    rgba(0, 0, 0, 0.04) 0 2px 6px 0;
+
+  --shadow-md:
+    rgba(0, 0, 0, 0.02) 0 0 0 1px,
+    rgba(0, 0, 0, 0.04) 0 2px 6px 0,
+    rgba(0, 0, 0, 0.1) 0 4px 8px 0;
+
+  --shadow-lg:
+    rgba(0, 0, 0, 0.03) 0 0 0 1px,
+    rgba(0, 0, 0, 0.06) 0 4px 10px 0,
+    rgba(0, 0, 0, 0.12) 0 8px 16px 0;
+
+  --shadow-xl:
+    rgba(0, 0, 0, 0.04) 0 0 0 1px,
+    rgba(0, 0, 0, 0.08) 0 8px 16px 0,
+    rgba(0, 0, 0, 0.14) 0 16px 32px 0;
+
+  --shadow-floating:
+    rgba(0, 0, 0, 0.04) 0 0 0 1px,
+    rgba(0, 0, 0, 0.1) 0 12px 24px 0,
+    rgba(0, 0, 0, 0.16) 0 24px 48px 0;
+
+  --shadow-hover: var(--shadow-md);
+
+  --shadow-focus:
+    0 0 0 3px rgba(255, 56, 92, 0.28);
+
   --duration-instant: 100ms;
   --duration-fast: 150ms;
   --duration-base: 220ms;
@@ -255,75 +270,54 @@
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-snap: cubic-bezier(0.25, 0.1, 0.25, 1);
 
-  --transition-hover: background-color var(--duration-fast) var(--ease-standard),
+  --transition-hover:
+    background-color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-base) var(--ease-out),
     transform var(--duration-fast) var(--ease-out);
-  --transition-focus: box-shadow var(--duration-fast) var(--ease-out);
-  --transition-modal: opacity var(--duration-base) var(--ease-out),
-    transform var(--duration-base) var(--ease-out);
-  --transition-drawer: transform var(--duration-slow) var(--ease-in-out);
-  --transition-page: opacity var(--duration-slow) var(--ease-in-out);
-  --transition-toast: transform var(--duration-base) var(--ease-out),
-    opacity var(--duration-base) var(--ease-out);
 
-  /* ==========================================================================
-     10. LAYOUT
-     ========================================================================== */
+  --transition-focus:
+    box-shadow var(--duration-fast) var(--ease-out);
+
+  --transition-page:
+    opacity var(--duration-slow) var(--ease-in-out);
+
   --container-max-width: 1280px;
-  --content-max-width: 1120px;
-  --sidebar-width: 264px;
-  --sidebar-width-collapsed: 72px;
-  --navbar-height: 64px;
+  --content-max-width: 1080px;
+
+  --navbar-height: 80px;
   --footer-height: 88px;
+
   --page-padding-x: var(--space-6);
   --page-padding-x-mobile: var(--space-4);
-  --section-spacing: var(--space-24);
-  --section-spacing-mobile: var(--space-12);
 
-  /* ==========================================================================
-     11. BREAKPOINTS
-     ========================================================================== */
-  --breakpoint-mobile: 375px;
-  --breakpoint-tablet: 768px;
-  --breakpoint-laptop: 1024px;
-  --breakpoint-desktop: 1280px;
-  --breakpoint-wide: 1536px;
+  --section-spacing: var(--space-16);
+  --section-spacing-mobile: var(--space-8);
 
-  /* ==========================================================================
-     12. Z-INDEX
-     ========================================================================== */
-  --z-base: 0;
-  --z-dropdown: 1000;
-  --z-sticky: 1100;
-  --z-navbar: 1200;
-  --z-drawer: 1300;
-  --z-overlay: 1400;
-  --z-modal: 1500;
-  --z-popover: 1600;
-  --z-toast: 1700;
-  --z-tooltip: 1800;
-  --z-max: 9999;
-
-  /* ==========================================================================
-     13. MARKETPLACE TOKENS
-     ========================================================================== */
+  /* Marketplace */
   --lead-live: var(--amber-500);
   --lead-live-bg: var(--amber-50);
+
   --lead-accepted: var(--teal-500);
   --lead-accepted-bg: var(--teal-50);
+
   --lead-assigned: var(--navy-500);
   --lead-assigned-bg: var(--navy-50);
+
   --lead-expired: var(--neutral-400);
   --lead-expired-bg: var(--neutral-100);
 
   --provider-available: var(--teal-500);
   --provider-available-bg: var(--teal-50);
+
   --provider-busy: var(--amber-500);
   --provider-busy-bg: var(--amber-50);
+
   --provider-offline: var(--neutral-400);
   --provider-offline-bg: var(--neutral-100);
+
   --provider-online: var(--teal-500);
+
   --provider-verified: var(--navy-500);
   --provider-verified-bg: var(--navy-50);
 
@@ -334,229 +328,124 @@
   --job-arrived: var(--teal-500);
   --job-completed: var(--teal-600);
   --job-completed-bg: var(--teal-50);
+
   --job-cancelled: var(--ember-500);
   --job-cancelled-bg: var(--ember-50);
 
   --payment-success: var(--teal-500);
   --payment-success-bg: var(--teal-50);
+
   --payment-pending: var(--amber-500);
   --payment-pending-bg: var(--amber-50);
+
   --payment-failed: var(--ember-500);
   --payment-failed-bg: var(--ember-50);
 
-  /* ==========================================================================
-     14. MAP TOKENS
-     ========================================================================== */
+  --payment-card-bg: var(--color-surface-elevated);
+  --payment-card-border: var(--color-border);
+  --payment-secure-badge: var(--teal-600);
+
+  --payment-amount-foreground: var(--neutral-900);
+  --payment-fee-foreground: var(--neutral-700);
+
+  --status-success-bg: var(--teal-50);
+  --status-success-fg: var(--teal-700);
+
+  --status-warning-bg: var(--amber-50);
+  --status-warning-fg: var(--amber-700);
+
+  --status-danger-bg: var(--ember-50);
+  --status-danger-fg: var(--ember-700);
+
+  --status-info-bg: var(--navy-50);
+  --status-info-fg: var(--navy-600);
+
+  --status-neutral-bg: var(--neutral-200);
+  --status-neutral-fg: var(--neutral-700);
+
   --map-customer-pin: var(--navy-600);
   --map-provider-pin: var(--amber-500);
   --map-route-active: var(--amber-500);
   --map-route-inactive: var(--neutral-300);
+
   --map-cluster-bg: var(--navy-600);
   --map-cluster-foreground: var(--neutral-50);
-  --map-radius-fill: rgba(219, 139, 43, 0.12);
-  --map-overlay-panel-bg: rgba(253, 253, 251, 0.96);
 
-  /* ==========================================================================
-     15. PAYMENT TOKENS (UI chrome, distinct from status tokens above)
-     ========================================================================== */
-  --payment-card-bg: var(--color-surface-elevated);
-  --payment-card-border: var(--color-border);
-  --payment-secure-badge: var(--teal-600);
-  --payment-amount-foreground: var(--neutral-900);
-  --payment-fee-foreground: var(--neutral-500);
+  --map-radius-fill: rgba(255, 56, 92, 0.12);
+  --map-overlay-panel-bg: rgba(255, 255, 255, 0.96);
 
-  /* ==========================================================================
-     16. STATUS TOKENS — generic badges/pills reused across tables, cards, toasts
-     ========================================================================== */
-  --status-success-bg: var(--teal-50);
-  --status-success-fg: var(--teal-700);
-  --status-warning-bg: var(--amber-50);
-  --status-warning-fg: var(--amber-700);
-  --status-danger-bg: var(--ember-50);
-  --status-danger-fg: var(--ember-700);
-  --status-info-bg: var(--navy-50);
-  --status-info-fg: var(--navy-600);
-  --status-neutral-bg: var(--neutral-200);
-  --status-neutral-fg: var(--neutral-700);
-
-  /* ==========================================================================
-     18. ACCESSIBILITY TOKENS
-     ========================================================================== */
   --a11y-focus-ring-color: var(--amber-500);
   --a11y-focus-ring-width: 2px;
   --a11y-focus-ring-offset: 2px;
   --a11y-min-tap-target: 44px;
-  --a11y-text-on-primary: var(--neutral-900);
+  --a11y-text-on-primary: #FFFFFF;
   --a11y-text-on-inverse: var(--neutral-50);
   --a11y-outline-color: var(--navy-400);
 }
 
-/* ==========================================================================
-   17. DARK THEME
-   Raw ramps are unchanged — only the semantic layer remaps. No inversion:
-   surfaces step up from ink in deliberate stages, amber shifts brighter to
-   hold contrast, teal/ember shift brighter for the same reason.
-   ========================================================================== */
-
+/* Dark mode */
 .dark {
   --color-background: var(--neutral-900);
-  --color-surface: #1B1D26;
-  --color-surface-elevated: #21232E;
-  --color-surface-sunken: #0E0F14;
+
+  --color-surface: #2B2B2B;
+  --color-surface-elevated: #333333;
+  --color-surface-sunken: #1A1A1A;
   --color-surface-inverse: var(--neutral-50);
-  --color-overlay: rgba(0, 0, 0, 0.6);
-  --color-scrim: rgba(0, 0, 0, 0.8);
 
   --color-foreground: var(--neutral-50);
   --color-foreground-secondary: var(--neutral-300);
-  --color-foreground-muted: #9B9A93;
+  --color-foreground-muted: #A3A3A3;
   --color-foreground-inverse: var(--neutral-900);
 
   --color-primary: var(--amber-400);
   --color-primary-foreground: var(--neutral-900);
-  --color-secondary: var(--navy-500);
+
+  --color-secondary: var(--navy-400);
   --color-secondary-foreground: var(--neutral-50);
+
   --color-accent: var(--teal-400);
   --color-accent-foreground: #0D1410;
 
   --color-success: var(--teal-400);
   --color-success-foreground: #0D1410;
+
   --color-warning: var(--amber-400);
   --color-warning-foreground: var(--neutral-900);
+
   --color-danger: var(--ember-400);
   --color-danger-foreground: var(--neutral-50);
+
   --color-info: var(--navy-300);
   --color-info-foreground: var(--neutral-900);
 
-  --color-muted: #232430;
-  --color-muted-foreground: #9B9A93;
+  --color-muted: #2F2F2F;
+  --color-muted-foreground: #A3A3A3;
 
-  --color-border: rgba(244, 245, 241, 0.1);
-  --color-border-strong: rgba(244, 245, 241, 0.18);
-  --color-input: rgba(244, 245, 241, 0.12);
-  --color-divider: rgba(244, 245, 241, 0.08);
-
-  --color-disabled-bg: #232430;
-  --color-disabled-foreground: #5C5B56;
-
-  --state-hover-overlay: rgba(244, 245, 241, 0.06);
-  --state-pressed-overlay: rgba(244, 245, 241, 0.1);
-  --state-selected-bg: rgba(232, 163, 61, 0.14);
-  --state-selected-border: var(--amber-400);
-  --state-active-bg: rgba(232, 163, 61, 0.22);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.2);
+  --color-input: rgba(255, 255, 255, 0.14);
+  --color-divider: rgba(255, 255, 255, 0.08);
 
   --primary-hover: var(--amber-300);
   --primary-pressed: var(--amber-500);
-  --secondary-hover: var(--navy-400);
-  --secondary-pressed: var(--navy-700);
+
+  --secondary-hover: var(--navy-300);
+  --secondary-pressed: var(--navy-600);
+
   --accent-hover: var(--teal-300);
   --accent-pressed: var(--teal-600);
+
   --danger-hover: var(--ember-300);
   --danger-pressed: var(--ember-600);
-  --surface-hover: #262835;
-  --border-hover: rgba(244, 245, 241, 0.16);
+
+  --surface-hover: #3A3A3A;
+  --border-hover: rgba(255, 255, 255, 0.18);
 
   --focus-ring: var(--amber-400);
 
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.32);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.25);
-  --shadow-xl: 0 24px 56px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-floating: 0 24px 64px rgba(0, 0, 0, 0.6);
-  --shadow-hover: 0 16px 40px rgba(232, 163, 61, 0.22), 0 4px 12px rgba(0, 0, 0, 0.35);
-  --shadow-focus: 0 0 0 3px rgba(232, 163, 61, 0.4);
+  --shadow-md:
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.2);
 
-  --lead-live: var(--amber-400);
-  --lead-live-bg: rgba(232, 163, 61, 0.12);
-  --lead-accepted: var(--teal-400);
-  --lead-accepted-bg: rgba(62, 156, 137, 0.12);
-  --lead-assigned: var(--navy-300);
-  --lead-assigned-bg: rgba(94, 108, 137, 0.16);
-  --lead-expired: var(--neutral-500);
-  --lead-expired-bg: #1B1D26;
-
-  --provider-available: var(--teal-400);
-  --provider-available-bg: rgba(62, 156, 137, 0.12);
-  --provider-busy: var(--amber-400);
-  --provider-busy-bg: rgba(232, 163, 61, 0.12);
-  --provider-offline: var(--neutral-500);
-  --provider-offline-bg: #1B1D26;
-  --provider-online: var(--teal-400);
-  --provider-verified: var(--navy-300);
-  --provider-verified-bg: rgba(94, 108, 137, 0.16);
-
-  --customer-active: var(--amber-400);
-  --customer-active-bg: rgba(232, 163, 61, 0.12);
-
-  --job-en-route: var(--amber-400);
-  --job-arrived: var(--teal-400);
-  --job-completed: var(--teal-400);
-  --job-completed-bg: rgba(62, 156, 137, 0.12);
-  --job-cancelled: var(--ember-400);
-  --job-cancelled-bg: rgba(224, 101, 74, 0.12);
-
-  --payment-success: var(--teal-400);
-  --payment-success-bg: rgba(62, 156, 137, 0.12);
-  --payment-pending: var(--amber-400);
-  --payment-pending-bg: rgba(232, 163, 61, 0.12);
-  --payment-failed: var(--ember-400);
-  --payment-failed-bg: rgba(224, 101, 74, 0.12);
-
-  --map-customer-pin: var(--navy-300);
-  --map-provider-pin: var(--amber-400);
-  --map-route-active: var(--amber-400);
-  --map-route-inactive: var(--neutral-700);
-  --map-cluster-bg: var(--navy-400);
-  --map-cluster-foreground: var(--neutral-900);
-  --map-radius-fill: rgba(232, 163, 61, 0.16);
-  --map-overlay-panel-bg: rgba(27, 29, 38, 0.96);
-
-  --payment-card-bg: var(--color-surface-elevated);
-  --payment-card-border: var(--color-border);
-  --payment-secure-badge: var(--teal-400);
-  --payment-amount-foreground: var(--neutral-50);
-  --payment-fee-foreground: #9B9A93;
-
-  --status-success-bg: rgba(62, 156, 137, 0.14);
-  --status-success-fg: #6FC3B1;
-  --status-warning-bg: rgba(232, 163, 61, 0.14);
-  --status-warning-fg: var(--amber-300);
-  --status-danger-bg: rgba(224, 101, 74, 0.14);
-  --status-danger-fg: var(--ember-300);
-  --status-info-bg: rgba(94, 108, 137, 0.16);
-  --status-info-fg: var(--navy-200);
-  --status-neutral-bg: #232430;
-  --status-neutral-fg: var(--neutral-300);
-
-  --a11y-focus-ring-color: var(--amber-400);
-  --a11y-text-on-primary: var(--neutral-900);
-  --a11y-text-on-inverse: var(--neutral-900);
-  --a11y-outline-color: var(--navy-300);
+  --shadow-hover: var(--shadow-md);
 }
-
-/* ==========================================================================
-   19. DEVELOPER NOTES
-
-   - Never consume --neutral-*, --amber-*, --navy-*, --teal-*, --ember-*
-     ramps directly in components. They exist only to feed the semantic
-     layer (--color-*, --lead-*, --provider-*, --payment-*, --status-*).
-     This is what lets web, mobile, admin, and provider portal share one
-     token contract without re-deriving color decisions per surface.
-   - Adding a new surface (e.g. Provider Portal) means adding new
-     semantic tokens that reference existing ramps — do not introduce
-     new hex values outside this file.
-   - Dark mode is a remap, not an inversion: --color-surface steps UP
-     from --color-background in both themes (never flat, never inverted
-     contrast direction).
-   - Respect prefers-reduced-motion at the component layer by swapping
-     --duration-* tokens to 0ms; do not remove the transition property
-     itself, or focus/hover states will lose their transition entirely.
-   - --shadow-hover and --shadow-focus intentionally carry a warm amber
-     tint (not neutral black) — this is the "beacon" signature and
-     should not be neutralized to grey shadows elsewhere in the system.
-   - Marketplace tokens (--lead-*, --provider-*, --job-*, --payment-*)
-     are the single source of truth for status meaning. Table badges,
-     map pins, chat indicators, and push notifications must all read
-     from these, never redefine status colors locally.
-   ========================================================================== */
