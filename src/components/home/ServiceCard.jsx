@@ -346,7 +346,7 @@ export default function ServiceCard({
 }) {
   const router = useRouter();
 
-  const { isAuthenticated } = useAuth();
+  const { auth } = useAuth();
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -441,15 +441,13 @@ export default function ServiceCard({
     // STEP 0: CHECK LOGIN
     // =====================================
 
-    if (!isAuthenticated) {
-      alert(
-        "You are not logged in. Please login first, then you can proceed with the service."
-      );
-
-      router.push("/user/login");
-
-      return;
-    }
+  if (!auth.isAuthenticated) {
+  alert(
+    "You are not logged in. Please login first, then you can proceed with the service."
+  );
+  router.push("/user/login");
+  return;
+}
 
     try {
       setLoading(true);
