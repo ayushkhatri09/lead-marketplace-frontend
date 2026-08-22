@@ -120,7 +120,7 @@ import {
 import { serviceList } from "@/api/serviceApi";
 import ServiceCard from "./ServiceCard";
 
-export default function ServiceList({ onBook }) {
+export default function ServiceList({  }) {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -581,11 +581,10 @@ export default function ServiceList({ onBook }) {
         >
           {filteredServices.map(
             (service) => (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                onBook={onBook}
-              />
+             <ServiceCard
+  key={service.id}
+  service={service}
+/>
             )
           )}
         </div>
