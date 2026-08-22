@@ -483,7 +483,7 @@ export default function ProviderList({
             </div>
 
             {/* SERVICE FILTER */}
-
+{/* 
             <div className="relative md:w-56">
               <SlidersHorizontal
                 size={17}
@@ -544,7 +544,7 @@ export default function ProviderList({
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
 
             {/* CLEAR */}
 
